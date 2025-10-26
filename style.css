@@ -1,0 +1,263 @@
+body {
+    /* Base background color - very light pink */
+    background-color: #ffe6f0; 
+    
+    /* ADDING THE GRID PATTERN */
+    background-image: 
+        /* Vertical lines */
+        repeating-linear-gradient(to right, #f8c9d4, #f8c9d4 1px, #ffe6f0 1px, #ffe6f0 25px),
+        /* Horizontal lines */
+        repeating-linear-gradient(to bottom, #f8c9d4, #f8c9d4 1px, #ffe6f0 1px, #ffe6f0 25px);
+    
+    /* Ensuring the grid covers the entire page */
+    background-size: 100% 100%;
+
+    /* --- Remainder of original styles --- */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+
+
+
+.birthday-container {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px; /* Constrain width for a mobile-like view */
+    position: relative;
+}
+
+/* --- Typography --- */
+h1 {
+    font-size: 3.5em;
+    color: #4a001a;
+    margin-bottom: -20px;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+h2 {
+    font-size: 4em;
+    color: #8c1a3b;
+    margin-top: 0;
+    text-shadow: 2px 2px 0px #fff; 
+}
+
+.date-box {
+    background-color: #f77f98;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.click-message {
+    color:#f77f98;
+    font-weight: bold;
+    margin: 15px 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* --- Profile Area --- */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes it round */
+    border: 5px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.name-tag {
+    background-color: white;
+    color: #4a001a;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-top: -10px; /* Overlaps slightly with the picture */
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+/* --- Gift Buttons --- */
+.gift-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+    padding: 0 10px;
+}
+
+.gift-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-grow: 1;
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.video-btn {
+    background-color: #8c1a3b; /* Darker pink/red */
+}
+
+.flower-btn {
+    background-color: #f77f98; /* Lighter pink */
+}
+
+/* --- Pop-up Styling --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 350px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #8c1a3b;
+}
+
+/* A very simplified party hat and banner (replace with actual image/CSS art later) */
+.party-hat {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    background: url('https://via.placeholder.com/80/4a001a/ffffff?text=HAT') no-repeat center center;
+    background-size: cover;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: #4a001a;
+}
+
+.banner-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: repeating-linear-gradient(
+        45deg,
+        #f77f98,
+        #f77f98 10px,
+        #4a001a 10px,
+        #4a001a 20px
+    );
+    opacity: 0.5;
+}
+/* --- CSS ANIMATIONS --- */
+
+/* 1. Define the animation movement */
+@keyframes slideInFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Starts 20px lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Ends in the final position */
+    }
+}
+
+/* 2. Apply the animation to the heading classes */
+.animated-h1 {
+    opacity: 0; /* Starts hidden */
+    animation: slideInFade 0.5s ease-out forwards; /* Runs the animation once */
+}
+
+.animated-h2 {
+    opacity: 0; /* Starts hidden */
+    /* Delay the start of the H2 animation after H1 is done */
+    animation: slideInFade 0.5s ease-out 0.5s forwards; 
+}
+/* --- HEART ANIMATION --- */
+
+/* Define the animation for the heart pulse */
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* Makes the heart slightly bigger in the middle */
+    }
+}
+
+/* Define the animation for floating up/down */
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Moves 10px up */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Base style for the heart elements */
+.floating-heart {
+    position: absolute;
+    color: #f77f98; /* Pink color */
+    font-size: 20px;
+    z-index: 5;
+    /* Combine the two animations */
+    animation: 
+        heartPulse 1.5s infinite ease-in-out alternate,
+        heartFloat 3s infinite ease-in-out alternate;
+}
+
+/* Individual positioning and timing for a subtle random effect */
+.heart-1 {
+    top: 50%;
+    left: 10%;
+    animation-delay: 0.2s; /* Starts animation a bit late */
+}
+
+.heart-2 {
+    top: 65%;
+    right: 15%;
+    font-size: 15px; /* Smaller heart */
+    animation-duration: 3.5s; /* Slower floating */
+    animation-delay: 1s;
+}
+
+.heart-3 {
+    top: 35%;
+    left: 25%;
+    animation-duration: 2s; /* Faster pulsing */
+}

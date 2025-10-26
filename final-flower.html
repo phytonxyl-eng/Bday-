@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Flower Gift Revealed!</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .final-page {
+            background-color: #0d0d0d; /* Dark background from selection page */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        .final-page h1 {
+            color: #ffc0cb; /* Pink text */
+            margin-bottom: 30px;
+        }
+        .gift-image-area {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0d0d0d;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="final-page">
+        <h1>Your Personalized Flower Gift!</h1>
+        
+        <div id="flowerGift" class="gift-image-area">
+            Loading...
+        </div>
+
+        <p><a href="index.html" style="color: #ffc0cb; margin-top: 20px; display: block;">Back to Home</a></p>
+    </div>
+
+    <script>
+        function getQueryParameter(name) {
+            // Function to pull a value from the URL (like ?color=grass)
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const chosenColor = getQueryParameter('color');
+        const giftArea = document.getElementById('flowerGift');
+        
+        if (chosenColor === 'grass') {
+            giftArea.style.backgroundColor = 'green';
+            giftArea.innerHTML = 'A Bouquet of **Emerald**!<br>The color of growth!';
+        } else if (chosenColor === 'flower') {
+            giftArea.style.backgroundColor = 'red';
+            giftArea.innerHTML = 'A Bouquet of **Ruby**!<br>The color of passion!';
+        } else {
+            // Default or error message
+            giftArea.style.backgroundColor = 'gray';
+            giftArea.innerHTML = 'No color selected.';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Gift Color</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        .flower-page {
+            background-color: #0d0d0d; /* Very dark background */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        .color-selector {
+            margin: 30px 0;
+        }
+        .color-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border: 2px solid white;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .grass-color {
+            background-color: green; 
+        }
+        .flower-color {
+            background-color: red; 
+        }
+        .selected-icon {
+            color: #ffc0cb; /* Pink checkmark for selection */
+            font-size: 25px;
+            display: none; /* Hidden by default */
+        }
+
+        /* Simplified flower visual (replace with images/complex CSS later) */
+        .flower-visual {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            /* Placeholder to simulate the flowers growing from the bottom */
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.1)); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flower-page">
+        <h1>Select Your Favorite Color</h1>
+        
+        <div class="color-selector">
+            <div class="color-option" onclick="selectColor(this, 'grass')">
+                <div class="color-box grass-color">
+                    <span class="selected-icon">✔</span>
+                </div>
+                <span>Grass</span>
+            </div>
+
+            <div class="color-option" onclick="selectColor(this, 'flower')">
+                <div class="color-box flower-color">
+                    <span class="selected-icon">✔</span>
+                </div>
+                <span>Flower</span>
+            </div>
+        </div>
+
+        <button id="open-gift-btn" disabled style="padding: 10px 20px; background-color: gray; color: white; border: none; border-radius: 5px;">Open Gift</button>
+
+        <div class="flower-visual"></div>
+        <p><a href="index.html" style="color: #ffc0cb; margin-top: 20px; display: block;">Go Back</a></p>
+    </div>
+
+    <script src="flower-script.js"></script>
+</body>
+</html>
